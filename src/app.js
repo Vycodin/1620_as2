@@ -40,39 +40,39 @@ function saveNote(evt){
   const textarea = document.querySelector('textarea')
   arrayOfLines = textarea.value.split('\n')
   note_title = arrayOfLines.shift()
-  notes.push({title: note_title, noteBody: textarea.value, id:notes.length +1})
+  notes.push({title: note_title, noteBody: arrayOfLines, id:notes.length +1})
   console.log(notes)
-  const list_title = "<li>" + note_title + "</li>"
-  notes_list.insertAdjacentHTML('afterbegin', list_title)
+  const list_title = document.createElement('li')
+  const list_p = document.createElement('p')
+  list_p.innerText = note_title
+  list_title.appendChild(list_p)
+  notes_list.appendChild(list_title)
+  list_title.addEventListener('click', () =>{
+    read_note(list_title)
+  })
   remove_Note(evt)
 }
 
 //read note section
 
-const note_elements = document.querySelectorAll('.notes-list > li')
-note_elements.forEach(ev => ev.addEventListener('click', function(){read_note(ev)}))
-
-let close_button = "<button id='close_btn'>X</button>"
 const  reading_area = document.querySelector('.read-note-area')
 
 function read_note(evt){
-  console.log(evt)
-  read_title = evt.innerHTML
+  const note_div = document.createElement('div')
+  const note_P = document.createElement('p')
+  const close_btn = document.createElement('button')
+  read_title = evt.innerText
+  console.log(read_title)
   for (const note of notes){
     if (note.title == read_title){
       note_content = note.noteBody
-
+      console.log('bruh')
     }
   }
-  reading_area.insertAdjacentHTML('beforeend', close_button)
-  reading_area.insertAdjacentHTML('afterbegin', note_content)
-  note_close = document.querySelector("#close_btn")
-  note_close.addEventListener('click', close_note)
-}
-// close_note btn
-
-function close_note(evt){
-  while(reading_area.firstChild){
-    reading_area.removeChild(reading_area.firstChild)
-  }
+  close_btn.innerHTML = 'X'
+  note_P.innerHTML = note_content
+  reading_area.appendChild(note_div)
+  note_div.appendChild(note_P)
+  note_div.appendChild(close_btn)
+  close_btn.addEventListener('click', () => {close_btn.parentElement.remove()})
 }
