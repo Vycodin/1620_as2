@@ -34,10 +34,16 @@ function remove_Note(evt){
 
 //save button
 
+const notes_list = document.querySelector('.notes-list')
+
 function saveNote(evt){
   const textarea = document.querySelector('textarea')
   arrayOfLines = textarea.value.split('\n')
-  notes.push({title: arrayOfLines[0], noteBody: textarea.value, id:notes.length +1})
+  note_title = arrayOfLines.shift()
+  notes.push({title: note_title, noteBody: textarea.value, id:notes.length +1})
   console.log(notes)
+  const list_title = "<li>" + note_title + "</li>"
+  notes_list.insertAdjacentHTML('afterbegin', list_title)
+  remove_Note(evt)
 }
 
