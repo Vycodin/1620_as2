@@ -47,3 +47,32 @@ function saveNote(evt){
   remove_Note(evt)
 }
 
+//read note section
+
+const note_elements = document.querySelectorAll('.notes-list > li')
+note_elements.forEach(ev => ev.addEventListener('click', function(){read_note(ev)}))
+
+let close_button = "<button id='close_btn'>X</button>"
+const  reading_area = document.querySelector('.read-note-area')
+
+function read_note(evt){
+  console.log(evt)
+  read_title = evt.innerHTML
+  for (const note of notes){
+    if (note.title == read_title){
+      note_content = note.noteBody
+
+    }
+  }
+  reading_area.insertAdjacentHTML('beforeend', close_button)
+  reading_area.insertAdjacentHTML('afterbegin', note_content)
+  note_close = document.querySelector("#close_btn")
+  note_close.addEventListener('click', close_note)
+}
+// close_note btn
+
+function close_note(evt){
+  while(reading_area.firstChild){
+    reading_area.removeChild(reading_area.firstChild)
+  }
+}
