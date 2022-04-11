@@ -64,6 +64,7 @@ function read_note(evt, body){
   const note_P = document.createElement('p')
   const close_btn = document.createElement('button')
   close_btn.innerHTML = 'X'
+  close_btn.className='close_button'
   note_P.innerHTML = body
   reading_area.appendChild(note_div)
   note_div.appendChild(note_P)

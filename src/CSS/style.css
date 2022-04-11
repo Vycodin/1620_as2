@@ -122,6 +122,9 @@ textarea {
   outline: none;
   resize: none;
   overflow: auto;
+  width: 400px;
+  height: 200px;
+  font-size: 14px;
 }
 
 footer {
@@ -133,4 +136,43 @@ footer {
 footer p {
   color: var(--text);
   font-size: var(--lrg-txt);
+}
+
+li{
+  font-family: 'Libre Baskerville', serif;
+  color: var(--text);
+  font-size: 1.6rem;
+}
+
+ul{
+  list-style: none;
+}
+
+#save, #cancel_note{
+    background-color: var(--drk-white);
+    border: none;
+    color: var(--not-black);
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-family: 'Libre Baskerville', serif;
+
+}
+.close_button{
+    background-color: transparent;
+    border: none;
+    color: var(--not-black);
+    padding: 5px 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 8px;
+    font-family: 'Libre Baskerville', serif;
+
+}
+div{
+  display: flex;
+  justify-content: center;
 }
